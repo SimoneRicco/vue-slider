@@ -13,36 +13,37 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<div class="carousel">
+			<div class="carousel" @mouseover="mouseOver" @mouseleave="mouseLeave">
 				<div class="highlighted">
 					<img 
 					v-for="(image, index) in arrImages" 
 					:src="image"
 					:key="image"
-					class="{active: index == activeIndex}"
+					:class="{active: index == activeIndex}"
 					>
 					<div class="text-highlighted"></div>
 				</div>
 				<!-- div con le miniature -->
 				<div class="thumbs">
 					<div class="controls">
-						<i class="bi bi-arrow-up-circle-fill btn btn-prev"></i>
-						<i class="bi bi-arrow-down-circle-fill btn btn-next"></i>
+						<i class="bi bi-arrow-up-circle-fill btn btn-prev" @click="prev"></i>
+						<i class="bi bi-arrow-down-circle-fill btn btn-next" @click="next"></i>
 					</div>
 					<img 
 					v-for="(image, index) in arrImages" 
 					:src="image"
 					:key="image"
 					alt=""
-					class="{active: index == activeIndex}"
+					:class="{active: isActive}"
+					@click="isActive = !isActive"
 					>
 				</div>
 			</div>
-			<div class="auto">
+			<!-- <div class="auto">
 				<button class="start">Start</button>
 				<button class="stop">Stop</button>
 				<button class="reverse">Reverse</button>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

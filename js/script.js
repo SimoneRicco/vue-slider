@@ -9,36 +9,57 @@ const app = Vue.createApp({
 				'img/05.webp',
 			],
 			activeIndex: 0,
+			interval: setInterval(this.next, 1000),
+			isActive: false
 		}
 	},
 	methods: {
+		mouseOver() {
+			clearInterval(this.interval);
+		},
+		mouseLeave() {
+			this.interval = setInterval(this.next, 1000);
+		},
 		next() {
-			// dall'immagine attiva tolgo la classe active
-			listHighlighted[activeIndex].classList.remove('active');
-			listThumbs[activeIndex].classList.remove('active');
 			// settiamo il nuovo valore di active index
-			activeIndex++;
-			if (activeIndex >= listHighlighted.length) {
-				activeIndex = 0;
+			this.activeIndex++;
+			if (this.activeIndex >= this.arrImages.length) {
+				this.activeIndex = 0;
 			}
-			// alla nuova immagine attiva aggiungiamo la classe active
-			listHighlighted[activeIndex].classList.add('active');
-			listThumbs[activeIndex].classList.add('active');
-			caroselText.innerHTML = write(activeIndex);
+			// caroselText.innerHTML = write(activeIndex);
 		},
 		prev() {
-			// dall'immagine attiva tolgo la classe active
-			listHighlighted[activeIndex].classList.remove('active');
-			listThumbs[activeIndex].classList.remove('active');
 			// settiamo il nuovo valore di active index
-			activeIndex--;
-			if (activeIndex < 0) {
-				activeIndex = listHighlighted.length - 1;
+			this.activeIndex--;
+			if (this.activeIndex < 0) {
+				this.activeIndex = this.arrImages.length - 1;
 			}
-			// alla nuova immagine attiva aggiungiamo la classe active
-			listHighlighted[activeIndex].classList.add('active');
-			listThumbs[activeIndex].classList.add('active');
-			caroselText.innerHTML = write(activeIndex);
+			// caroselText.innerHTML = write(activeIndex);
+		},
+		write(num) {
+			let toReturn;
+			switch (num) {
+				case 0:
+					toReturn = "Spiderman"
+					break;
+				case 1:
+					toReturn = "Ratchet & Clank";
+					break;
+				case 2:
+					toReturn = "Fortnite";
+					break;
+				case 3:
+					toReturn = "Stray"
+					break;
+				case 4:
+					toReturn = "Avengers";
+					break;
+				default:
+					toReturn = "None"
+					break;
+			}
+			console.log(num)
+			return toReturn;
 		}
 	}
 });
