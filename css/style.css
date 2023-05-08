@@ -84,3 +84,14 @@
 	top: 8px;
 	font-size: 2rem;
 }
+
+.btn-next, .btn-prev{
+	position: absolute;
+	transform: translateX(-50%);
+}
+.btn-prev{
+	top: 0;
+}
+.btn-next{
+	bottom: 0;
+}
