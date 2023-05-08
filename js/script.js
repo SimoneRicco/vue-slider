@@ -9,7 +9,7 @@ const app = Vue.createApp({
 				'img/05.webp',
 			],
 			activeIndex: 0,
-			interval: setInterval(this.next, 1000),
+			interval: setInterval(this.next, 3000),
 			isActive: false
 		}
 	},
@@ -21,7 +21,7 @@ const app = Vue.createApp({
 			clearInterval(this.interval);
 		},
 		mouseLeave() {
-			this.interval = setInterval(this.next, 1000);
+			this.interval = setInterval(this.next, 3000);
 		},
 		next() {
 			// settiamo il nuovo valore di active index
