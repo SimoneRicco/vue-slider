@@ -34,8 +34,8 @@
 					:src="image"
 					:key="image"
 					alt=""
-					:class="{active: isActive}"
-					@click="isActive = !isActive"
+					:class="{active: index == activeIndex}"
+					@click="selected(index)"
 					>
 				</div>
 			</div>

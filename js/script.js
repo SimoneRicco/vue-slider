@@ -14,6 +14,9 @@ const app = Vue.createApp({
 		}
 	},
 	methods: {
+		selected(i){
+			this.activeIndex = i;
+		},
 		mouseOver() {
 			clearInterval(this.interval);
 		},
